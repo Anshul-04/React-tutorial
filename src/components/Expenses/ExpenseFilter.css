@@ -11,9 +11,14 @@
   margin: 1rem 0;
 }
 
-.expenses-filter label {
+.expenses-filter  {
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+
+.filter-text{
+  font-size: 1.5rem;
+  color: rgb(75, 72, 72);
 }
 
 .expenses-filter select {
