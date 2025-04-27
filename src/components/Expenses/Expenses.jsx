@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
-import ExpenseItem from "./ExpenseItem"; // Adjust the path as needed
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter"; // Adjust the path as needed
 import "./Expenses.css";
+import ExpensesList from './ExpensesList';
 
 
 export default function Expenses(props) {
@@ -17,26 +17,16 @@ export default function Expenses(props) {
     return expense.date.getFullYear().toString() === filteredYear;
   })
 
-  let expensesContent = <p>No expenses found.</p>;
-  // If there are expenses that match the selected year, map them to ExpenseItem components
-  if(filteredexpenses.length > 0){
-    expensesContent = filteredexpenses.map((expense)=>(
-      <ExpenseItem 
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
-
+  
   return (
-    <Card className="expenses">
-      <ExpenseFilter 
-        selected={filteredYear} 
-        onChangeFilter={filterChangeHandler}
-      />
-      {expensesContent}           
-    </Card>
+    <li>
+      <Card className="expenses">
+        <ExpenseFilter 
+          selected={filteredYear} 
+          onChangeFilter={filterChangeHandler}
+        />
+        <ExpensesList items={filteredexpenses} />          
+      </Card>
+    </li>    
   );
 }
